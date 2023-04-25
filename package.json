@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "start": "yarn rw dev"
+  },
   "workspaces": {
     "packages": [
       "api",
@@ -7,6 +10,7 @@
     ]
   },
   "devDependencies": {
+    "@redwoodjs/auth-dbauth-setup": "4.5.0",
     "@redwoodjs/core": "4.5.0"
   },
   "eslintConfig": {
