@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "Post" (
+CREATE TABLE IF NOT EXISTS "Post" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "body" TEXT NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE "Post" (
 );
 
 -- CreateTable
-CREATE TABLE "Contact" (
+CREATE TABLE IF NOT EXISTS "Contact" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "email" TEXT NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE "Contact" (
 );
 
 -- CreateTable
-CREATE TABLE "User" (
+CREATE TABLE IF NOT EXISTS "User" (
     "id" SERIAL NOT NULL,
     "name" TEXT,
     "email" TEXT NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE "User" (
 );
 
 -- CreateTable
-CREATE TABLE "Comment" (
+CREATE TABLE  IF NOT EXISTS "Comment"(
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "body" TEXT NOT NULL,
