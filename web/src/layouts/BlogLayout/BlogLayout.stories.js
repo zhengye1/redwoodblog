@@ -1,10 +1,13 @@
 import BlogLayout from './BlogLayout'
 
-export const generated = (args) => {
-  return <BlogLayout {...args} />
+export const loggedIn = () => {
+  mockCurrentUser({ email: 'rob@redwoodjs.com' })
+
+  return <BlogLayout />
 }
 
-export default {
-  title: 'Layouts/BlogLayout',
-  component: BlogLayout,
+export const loggedOut = () => {
+  return <BlogLayout />
 }
+
+export default { title: 'Layouts/BlogLayout' }

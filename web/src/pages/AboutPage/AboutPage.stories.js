@@ -4,7 +4,4 @@ export const generated = () => {
   return <AboutPage />
 }
 
-export default {
-  title: 'Pages/AboutPage',
-  component: AboutPage,
-}
+export default { title: 'Pages/AboutPage' }

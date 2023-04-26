@@ -11,11 +11,12 @@ import { logger } from 'src/lib/logger'
 
 export const handler = createGraphQLHandler({
   authDecoder,
-  getCurrentUser,
   loggerConfig: { logger, options: {} },
+  getCurrentUser,
   directives,
   sdls,
   services,
+
   onException: () => {
     // Disconnect from your database with an unhandled exception.
     db.$disconnect()

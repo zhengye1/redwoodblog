@@ -1,8 +1,6 @@
-import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
-
-import { timeTag } from 'src/lib/formatters'
+import { Link, routes, navigate } from '@redwoodjs/router'
 
 const DELETE_POST_MUTATION = gql`
   mutation DeletePostMutation($id: Int!) {
@@ -12,14 +10,31 @@ const DELETE_POST_MUTATION = gql`
   }
 `
 
+const jsonDisplay = (obj) => {
+  return (
+    <pre>
+      <code>{JSON.stringify(obj, null, 2)}</code>
+    </pre>
+  )
+}
+
+const timeTag = (datetime) => {
+  return (
+    <time dateTime={datetime} title={datetime}>
+      {new Date(datetime).toUTCString()}
+    </time>
+  )
+}
+
+const checkboxInputTag = (checked) => {
+  return <input type="checkbox" checked={checked} disabled />
+}
+
 const Post = ({ post }) => {
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     onCompleted: () => {
       toast.success('Post deleted')
       navigate(routes.posts())
-    },
-    onError: (error) => {
-      toast.error(error.message)
     },
   })
 
@@ -65,13 +80,13 @@ const Post = ({ post }) => {
         >
           Edit
         </Link>
-        <button
-          type="button"
+        <a
+          href="#"
           className="rw-button rw-button-red"
           onClick={() => onDeleteClick(post.id)}
         >
           Delete
-        </button>
+        </a>
       </nav>
     </>
   )

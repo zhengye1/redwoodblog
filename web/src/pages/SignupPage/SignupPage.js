@@ -24,17 +24,14 @@ const SignupPage = () => {
     }
   }, [isAuthenticated])
 
-  // focus on username box on page load
-  const usernameRef = useRef(null)
+  // focus on email box on page load
+  const usernameRef = useRef()
   useEffect(() => {
-    usernameRef.current?.focus()
+    usernameRef.current.focus()
   }, [])
 
   const onSubmit = async (data) => {
-    const response = await signUp({
-      username: data.username,
-      password: data.password,
-    })
+    const response = await signUp({ ...data })
 
     if (response.message) {
       toast(response.message)
@@ -50,7 +47,7 @@ const SignupPage = () => {
     <>
       <MetaTags title="Signup" />
 
-      <main className="rw-main">
+      <main className="rw-main w-96 mx-auto mt-12">
         <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
         <div className="rw-scaffold rw-login-container">
           <div className="rw-segment">
@@ -114,7 +111,7 @@ const SignupPage = () => {
               </div>
             </div>
           </div>
-          <div className="rw-login-link">
+          <div className="rw-login-link mt-2 text-center">
             <span>Already have an account?</span>{' '}
             <Link to={routes.login()} className="rw-link">
               Log in!

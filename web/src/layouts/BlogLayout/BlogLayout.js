@@ -1,43 +1,66 @@
-import { Link, routes } from "@redwoodjs/router";
-import { useAuth } from "src/auth";
+import { Link, routes } from '@redwoodjs/router'
 
+import { useAuth } from 'src/auth'
+import { Toaster } from '@redwoodjs/web/toast'
 const BlogLayout = ({ children }) => {
-  const { isAuthenticated, currentUser, logOut } = useAuth();
+  const { logOut, isAuthenticated, currentUser } = useAuth()
+
   return (
     <>
-      <header>
-        <div className="flex-between">
-          <h1>
-            <Link to={routes.home()}>Redwood Blog</Link>
-          </h1>
-          {isAuthenticated ? (
-            <div>
-              <span>Logged in as {currentUser.email}</span>{" "}
-              <button type="button" onClick={logOut}>
-                Logout
-              </button>
-            </div>
-          ) : (
-            <Link to={routes.login()}>Login</Link>
-          )}
-        </div>
+      <Toaster />
+      <header className="relative flex justify-between items-center py-4 px-8 bg-blue-700 text-white">
+        <h1 className="text-5xl font-semibold tracking-tight">
+          <Link
+            className="text-blue-400 hover:text-blue-100 transition duration-100"
+            to={routes.home()}
+          >
+            Redwood Blog
+          </Link>
+        </h1>
         <nav>
-          <ul>
+          <ul className="relative flex items-center font-light">
             <li>
-              <Link to={routes.home()}>Home</Link>
+              <Link
+                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
+                to={routes.about()}
+              >
+                About
+              </Link>
             </li>
             <li>
-              <Link to={routes.about()}>About</Link>
+              <Link
+                className="py-2 px-4 hover:bg-blue-600 transition duration-100 rounded"
+                to={routes.contact()}
+              >
+                Contact
+              </Link>
             </li>
             <li>
-              <Link to={routes.contact()}>Contact</Link>
+              {isAuthenticated ? (
+                <div>
+                  <button type="button" onClick={logOut} className="py-2 px-4">
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <Link to={routes.login()} className="py-2 px-4">
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
+          {isAuthenticated && (
+            <div className="absolute bottom-1 right-0 mr-12 text-xs text-blue-300">
+              Login as {currentUser.name}
+            </div>
+          )}
         </nav>
       </header>
-      <main>{children}</main>
+      <main className="mx-auto max-w-4xl rounded-b bg-white p-12 shadow">
+        {children}
+      </main>
     </>
-  );
-};
+  )
+}
 
-export default BlogLayout;
+export default BlogLayout

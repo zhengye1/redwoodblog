@@ -4,7 +4,4 @@ export const generated = () => {
   return <ContactPage />
 }
 
-export default {
-  title: 'Pages/ContactPage',
-  component: ContactPage,
-}
+export default { title: 'Pages/ContactPage' }

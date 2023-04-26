@@ -2,19 +2,19 @@ import { Loading, Empty, Failure, Success } from './ArticleCell'
 import { standard } from './ArticleCell.mock'
 
 export const loading = () => {
-  return Loading ? <Loading /> : <></>
+  return Loading ? <Loading /> : null
 }
 
 export const empty = () => {
-  return Empty ? <Empty /> : <></>
+  return Empty ? <Empty /> : null
 }
 
-export const failure = (args) => {
-  return Failure ? <Failure error={new Error('Oh no')} {...args} /> : <></>
+export const failure = () => {
+  return Failure ? <Failure error={new Error('Oh no')} /> : null
 }
 
-export const success = (args) => {
-  return Success ? <Success {...standard()} {...args} /> : <></>
+export const success = () => {
+  return Success ? <Success article={standard().article} /> : null
 }
 
 export default { title: 'Cells/ArticleCell' }

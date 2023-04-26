@@ -12,4 +12,3 @@ const ArticlePage = ({ id }) => {
 }
 
 export default ArticlePage
-

@@ -1,9 +1,6 @@
-import { render } from '@redwoodjs/testing/web'
+import { render } from '@redwoodjs/testing'
 
 import ContactPage from './ContactPage'
-
-//   Improve this test with help from the Redwood Testing Doc:
-//   https://redwoodjs.com/docs/testing#testing-pages-layouts
 
 describe('ContactPage', () => {
   it('renders successfully', () => {
